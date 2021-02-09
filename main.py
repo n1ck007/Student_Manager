@@ -27,4 +27,4 @@ elif x == 'c' or x == 'EDIT':
 else:
 	print('invalid input')
 
-input("press enter to continue")
+input("press enter to close program")
