@@ -1,30 +1,57 @@
 #imports
+import csv
 import student
 
-#inits
-stu = student.Student()
+#defines
+
+studentarchive = []
+
+#functions
+def add_student():
+	print('Please enter the new students information.')
+	firstname = input('First Name: ').capitalize()
+	lastname = input('Last Name: ').capitalize()
+	instrument = input('Instrument: ').capitalize()
+	age = input('Age: ').capitalize()
+	tuition = input('tuition: $').capitalize()
+	tuition = f'${tuition}'
+
+	newstudent = student.Student(firstname, lastname, instrument, age, tuition)
+	print(newstudent.firstname, newstudent.lastname, newstudent.instrument, newstudent.age, newstudent.tuition)
+
+
+
+
 
 #script
-print('Welcome.\n',stu.firstname, stu.lastname)
-print(stu.firstname, stu.lastname)
+print('Welcome.')
+continueloop = True
+while continueloop == True:
+	#this if tree returns an UPPERCASE string
+	#strings used in comparisons must be UPPERCASE
+	print('What would you like to do?\n(V) View\n(A) Add\n(E) Edit\n(X) Exit')
+	userinput = input()
+	userinput = userinput.upper() 
+	if userinput == 'V' or userinput == 'VIEW':
+		userinput = 'VIEW'
+		continueloop = True		
 
+	elif userinput == 'A' or userinput =='ADD':
+		userinput = 'ADD'
+		add_student()
+		continueloop = True
 
+	elif userinput == 'E' or userinput == 'EDIT':
+		userinput = 'EDIT'
+		continueloop = True
 
-print('What would you like to do? \nA. View \nB. Add \nC. Edit')
+	elif userinput == 'X' or userinput == 'EXIT':
+		userinput = 'EXIT'
+		continueloop = False
 
-x = input()
-x = x.upper()
+	else:
+		userinput = 'INVALID'
+		continueloop = True
 
-if x == 'A' or x == 'VIEW':
-	print('list students')
-
-elif x == 'B' or x =='ADD':
-	print ('add students')
-
-elif x == 'c' or x == 'EDIT':
-	print('edit students')
-
-else:
-	print('invalid input')
-
-input("press enter to close program")
+	pass
+	
