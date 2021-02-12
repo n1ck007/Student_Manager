@@ -3,11 +3,11 @@ import csv
 import student
 
 #defines
-
 studentarchive = []
 
 #functions
 def add_student():
+	#requests info from the user
 	print('Please enter the new students information.')
 	firstname = input('First Name: ').capitalize()
 	lastname = input('Last Name: ').capitalize()
@@ -16,9 +16,14 @@ def add_student():
 	tuition = input('tuition: $').capitalize()
 	tuition = f'${tuition}'
 
+	#creates student obj with inputs 
 	newstudent = student.Student(firstname, lastname, instrument, age, tuition)
 	print(newstudent.firstname, newstudent.lastname, newstudent.instrument, newstudent.age, newstudent.tuition)
 
+	#saves student's properties to a csv file
+	with open('student_info.txt', 'a') as student_info:
+		stuwriter = csv.writer(student_info, delimiter = ',')
+		stuwriter.writerow([newstudent.firstname, newstudent.lastname, newstudent.instrument, newstudent.age, newstudent.tuition])
 
 
 
